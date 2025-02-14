@@ -57,9 +57,9 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
     _addConfigUsecase.setConfigUsesImperialUnits(usesImperialUnits);
   }
 
-  Future<double> getKcalAdjustment() async {
+  Future<double> getTotalKcalGoal() async {
     final config = await _getConfigUsecase.getConfig();
-    return config.userKcalAdjustment ?? 0;
+    return config.userKcalGoal ?? 2000;  // Default to 2000 if not set
   }
 
   Future<double?> getUserCarbGoalPct() async {
@@ -77,17 +77,19 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
     return config.userFatGoalPct;
   }
 
-  void setKcalAdjustment(double kcalAdjustment) {
-    _addConfigUsecase.setConfigKcalAdjustment(kcalAdjustment);
+  Future<void> setTotalKcalGoal(double totalKcalGoal) async {
+    await _addConfigUsecase.setConfigKcalGoal(totalKcalGoal);
   }
-  void setMacroGoals(
-      double carbGoalPct, double proteinGoalPct, double fatGoalPct) {
-    _addConfigUsecase.setConfigMacroGoalPct(carbGoalPct.toInt() / 100,
-        proteinGoalPct.toInt() / 100, fatGoalPct.toInt() / 100);
+  Future<void> setMacroGoals(
+      double carbGoalPct, double proteinGoalPct, double fatGoalPct) async {
+    // Values are already in percentage (0-100), convert to decimal (0-1)
+    await _addConfigUsecase.setConfigMacroGoalPct(
+        carbGoalPct / 100,
+        proteinGoalPct / 100,
+        fatGoalPct / 100);
   }
 
-  void updateTrackedDay(DateTime day) async {
-    final day = DateTime.now();
+  Future<void> updateTrackedDay(DateTime day) async {
     final totalKcalGoal = await _getKcalGoalUsecase.getKcalGoal();
     final totalCarbsGoal =
         await _getMacroGoalUsecase.getCarbsGoal(totalKcalGoal);

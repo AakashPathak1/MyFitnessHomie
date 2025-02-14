@@ -65,8 +65,7 @@ class ActivityDetailBloc
   }
 
   void _updateTrackedDay(DateTime dateTime, double caloriesBurned) async {
-    final totalKcalGoal = await _getKcalGoalUsecase.getKcalGoal(
-        totalKcalActivitiesParam: caloriesBurned);
+    final totalKcalGoal = await _getKcalGoalUsecase.getKcalGoal();
     final totalCarbsGoal =
         await _getMacroGoalUsecase.getCarbsGoal(totalKcalGoal);
     final totalFatGoal = await _getMacroGoalUsecase.getFatsGoal(totalKcalGoal);

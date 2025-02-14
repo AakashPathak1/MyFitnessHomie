@@ -553,7 +553,7 @@ class S {
   /// `Calculations`
   String get settingsCalculationsLabel {
     return Intl.message(
-      'Calculations',
+      'Goals',
       name: 'settingsCalculationsLabel',
       desc: '',
       args: [],

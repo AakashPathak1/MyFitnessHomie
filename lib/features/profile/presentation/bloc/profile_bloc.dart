@@ -69,8 +69,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       UserEntity user, DateTime day) async {
     final hasTrackedDay = await _addTrackedDayUsecase.hasTrackedDay(day);
     if (hasTrackedDay) {
-      final totalKcalGoal =
-          await _getKcalGoalUsecase.getKcalGoal(userEntity: user);
+      final totalKcalGoal = await _getKcalGoalUsecase.getKcalGoal();
 
       await _addTrackedDayUsecase.updateDayCalorieGoal(day, totalKcalGoal);
     }

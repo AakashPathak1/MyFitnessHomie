@@ -21,11 +21,11 @@ void main() {
         () {
       final user = youngSedentaryMaleWantingToMaintainWeight;
 
-      double resultCalorieGoal = CalorieGoalCalc.getTotalKcalGoal(user, 200.0);
+      double resultCalorieGoal = CalorieGoalCalc.getTotalKcalGoal(2000.0, 200.0);
 
-      // TDEE: 2662, Activities: 200, Adjustment: + 0
-      // 2662 + 200 + 0 = 2862
-      int expectedKcal = 2862;
+      // Base goal: 2000, Activities: 200
+      // 2000 + 200 = 2200
+      int expectedKcal = 2200;
 
       expect(resultCalorieGoal.toInt(), expectedKcal);
     });
@@ -35,11 +35,11 @@ void main() {
         () {
       final user = middleAgedActiveFemaleWantingToLoseWeight;
 
-      double resultCalorieGoal = CalorieGoalCalc.getTotalKcalGoal(user, 550.0);
+      double resultCalorieGoal = CalorieGoalCalc.getTotalKcalGoal(1800.0, 550.0);
 
-      // TDEE: 2087, Activities: 550, Adjustment: -500
-      // 2087 + 550 - 500 = 2137
-      int expectedKcal = 2137;
+      // Base goal: 1800, Activities: 550
+      // 1800 + 550 = 2350
+      int expectedKcal = 2350;
 
       expect(resultCalorieGoal.toInt(), expectedKcal);
     });

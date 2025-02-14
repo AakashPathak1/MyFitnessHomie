@@ -8,7 +8,7 @@ class ConfigEntity extends Equatable {
   final bool hasAcceptedSendAnonymousData;
   final AppThemeEntity appTheme;
   final bool usesImperialUnits;
-  final double? userKcalAdjustment;
+  final double? userKcalGoal;
   final double? userCarbGoalPct;
   final double? userProteinGoalPct;
   final double? userFatGoalPct;
@@ -16,7 +16,7 @@ class ConfigEntity extends Equatable {
   const ConfigEntity(this.hasAcceptedDisclaimer, this.hasAcceptedPolicy,
       this.hasAcceptedSendAnonymousData, this.appTheme,
       {this.usesImperialUnits = false,
-      this.userKcalAdjustment,
+      this.userKcalGoal,
       this.userCarbGoalPct,
       this.userProteinGoalPct,
       this.userFatGoalPct});
@@ -27,7 +27,7 @@ class ConfigEntity extends Equatable {
         dbo.hasAcceptedSendAnonymousData,
         AppThemeEntity.fromAppThemeDBO(dbo.selectedAppTheme),
         usesImperialUnits: dbo.usesImperialUnits ?? false,
-        userKcalAdjustment: dbo.userKcalAdjustment,
+        userKcalGoal: dbo.userKcalGoal,
         userCarbGoalPct: dbo.userCarbGoalPct,
         userProteinGoalPct: dbo.userProteinGoalPct,
         userFatGoalPct: dbo.userFatGoalPct,
@@ -39,7 +39,7 @@ class ConfigEntity extends Equatable {
         hasAcceptedPolicy,
         hasAcceptedSendAnonymousData,
         usesImperialUnits,
-        userKcalAdjustment,
+        userKcalGoal,
         userCarbGoalPct,
         userProteinGoalPct,
         userFatGoalPct,

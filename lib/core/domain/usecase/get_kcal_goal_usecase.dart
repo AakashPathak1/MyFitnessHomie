@@ -13,18 +13,16 @@ class GetKcalGoalUsecase {
   GetKcalGoalUsecase(
       this._userRepository, this._configRepository, this._userActivityRepository);
 
-  Future<double> getKcalGoal(
-      {UserEntity? userEntity,
-      double? totalKcalActivitiesParam,
-      double? kcalUserAdjustment}) async {
-    final user = userEntity ?? await _userRepository.getUserData();
+  Future<double> getKcalGoal() async {
     final config = await _configRepository.getConfig();
-    final totalKcalActivities = totalKcalActivitiesParam ??
-        (await _userActivityRepository.getAllUserActivityByDate(DateTime.now()))
-            .map((activity) => activity.burnedKcal)
-            .toList()
-            .sum;
-    return CalorieGoalCalc.getTotalKcalGoal(user, totalKcalActivities,
-        kcalUserAdjustment: config.userKcalAdjustment);
+    final totalKcalActivities = (await _userActivityRepository.getAllUserActivityByDate(DateTime.now()))
+        .map((activity) => activity.burnedKcal)
+        .toList()
+        .sum;
+    
+    // Get the user's total goal (default to 2000 if not set) and add activities
+    return CalorieGoalCalc.getTotalKcalGoal(
+        config.userKcalGoal ?? 2000,
+        totalKcalActivities);
   }
 }

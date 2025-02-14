@@ -22,7 +22,7 @@ class ConfigDBOAdapter extends TypeAdapter<ConfigDBO> {
       fields[2] as bool,
       fields[3] as AppThemeDBO,
       usesImperialUnits: fields[4] as bool?,
-      userKcalAdjustment: fields[5] as double?,
+      userKcalGoal: fields[5] as double?,
     )
       ..userCarbGoalPct = fields[6] as double?
       ..userProteinGoalPct = fields[7] as double?
@@ -44,7 +44,7 @@ class ConfigDBOAdapter extends TypeAdapter<ConfigDBO> {
       ..writeByte(4)
       ..write(obj.usesImperialUnits)
       ..writeByte(5)
-      ..write(obj.userKcalAdjustment)
+      ..write(obj.userKcalGoal)
       ..writeByte(6)
       ..write(obj.userCarbGoalPct)
       ..writeByte(7)

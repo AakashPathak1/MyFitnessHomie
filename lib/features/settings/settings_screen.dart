@@ -68,7 +68,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 ),
                 ListTile(
                   leading: const Icon(Icons.calculate_outlined),
-                  title: Text(S.of(context).settingsCalculationsLabel),
+                  title: const Text('Goals'),
                   onTap: () => _showCalculationsDialog(context),
                 ),
                 ListTile(

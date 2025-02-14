@@ -17,7 +17,7 @@ class ConfigDBO extends HiveObject {
   @HiveField(4)
   bool? usesImperialUnits;
   @HiveField(5)
-  double? userKcalAdjustment;
+  double? userKcalGoal;
   @HiveField(6)
   double? userCarbGoalPct;
   @HiveField(7)
@@ -27,7 +27,7 @@ class ConfigDBO extends HiveObject {
 
   ConfigDBO(this.hasAcceptedDisclaimer, this.hasAcceptedPolicy,
       this.hasAcceptedSendAnonymousData, this.selectedAppTheme,
-      {this.usesImperialUnits = false, this.userKcalAdjustment});
+      {this.usesImperialUnits = false, this.userKcalGoal});
 
   factory ConfigDBO.empty() =>
       ConfigDBO(false, false, false, AppThemeDBO.system);
@@ -37,5 +37,6 @@ class ConfigDBO extends HiveObject {
       entity.hasAcceptedPolicy,
       entity.hasAcceptedSendAnonymousData,
       AppThemeDBO.fromAppThemeEntity(entity.appTheme),
-      usesImperialUnits: entity.usesImperialUnits);
+      usesImperialUnits: entity.usesImperialUnits,
+      userKcalGoal: entity.userKcalGoal);
 }

@@ -38,7 +38,7 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
     final userEntity = userSelection.toUserEntity();
     double? calorieGoal;
     if (userEntity != null) {
-      calorieGoal = CalorieGoalCalc.getTotalKcalGoal(userEntity, 0);
+      calorieGoal = 2000; // Default goal for new users
     }
     return calorieGoal;
   }
