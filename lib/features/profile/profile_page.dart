@@ -62,12 +62,7 @@ class _ProfilePageState extends State<ProfilePage> {
       UserEntity user, bool usesImperialUnits) {
     return ListView(
       children: [
-        const SizedBox(height: 32.0),
-        BMIOverview(
-          bmiValue: userBMIEntity.bmiValue,
-          nutritionalStatus: userBMIEntity.nutritionalStatus,
-        ),
-        const SizedBox(height: 32.0),
+        const SizedBox(height: 16.0),
         ListTile(
           title: Text(
             S.of(context).activityLabel,
