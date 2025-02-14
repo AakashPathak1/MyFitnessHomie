@@ -4,9 +4,6 @@ import csv
 from typing import Dict, List
 import os
 
-# Your FDC API key
-API_KEY = "swbOj18TO0nNbctot3D3fomPuqshJOGyOTmK5Qqo"
-
 def fetch_food_data(page: int = 1, per_page: int = 200) -> Dict:
     url = f"https://api.nal.usda.gov/fdc/v1/foods/list"
     params = {
